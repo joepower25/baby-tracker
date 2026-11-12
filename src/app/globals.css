@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-top: #e8f2ef;
+  --bg-mid: #f3ebe3;
+  --bg-bottom: #f7f4ef;
+  --ink: #1f2a27;
+  --ink-soft: #4a5a54;
+  --muted: #6d7c75;
+  --line: rgba(31, 42, 39, 0.08);
+  --card: rgba(255, 255, 255, 0.72);
+  --card-strong: #ffffff;
+  --accent: #2f6f64;
+  --accent-soft: #d7ebe5;
+  --accent-warm: #c9895c;
+  --feed: #3d7a6e;
+  --diaper: #6a7f9a;
+  --sleep: #6b5f8d;
+  --pump: #8a6a4e;
+  --med: #8b5e5e;
+  --growth: #5f7a4e;
+  --danger: #a14a4a;
+  --shadow: 0 18px 40px rgba(31, 42, 39, 0.08);
+  --radius: 1.25rem;
+  --tap: 3.25rem;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 700px at 10% -10%, #d9efe8 0%, transparent 55%),
+    radial-gradient(900px 600px at 100% 0%, #f0e2d4 0%, transparent 50%),
+    linear-gradient(180deg, var(--bg-top), var(--bg-mid) 42%, var(--bg-bottom));
+  background-attachment: fixed;
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+.brand {
+  font-family: var(--font-display), Georgia, serif;
+  letter-spacing: -0.02em;
+}
+
+@layer utilities {
+  .safe-bottom {
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+  }
+  .safe-top {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+  .glass {
+    background: var(--card);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+  .tap {
+    min-height: var(--tap);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sheet-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+.animate-rise {
+  animation: rise-in 0.45s ease-out both;
+}
+
+.animate-sheet {
+  animation: sheet-up 0.28s ease-out both;
+}
+
+.sleep-pulse {
+  animation: soft-pulse 2.4s ease-in-out infinite;
+}
